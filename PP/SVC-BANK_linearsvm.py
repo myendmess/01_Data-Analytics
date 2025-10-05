@@ -1,32 +1,23 @@
-Original file is located at
-    https://colab.research.google.com/drive/1Xq2qcS9fNJpimSEcXTTMgbGQMUkx5dXJ
-"""
 
-'''from google.colab import drive
-drive.mount('/content/drive')'''
+
+from google.colab import drive
+drive.mount('/content/drive')
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numpy
-import sklearn
-print(numpy.__version__)
-print(sklearn.__version__)
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
-from sklearn.svm import LinearSVC, SVC
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import precision_score, accuracy_score, classification_report, confusion_matrix
+from sklearn.svm import LinearSVC
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import precision_score, accuracy_score,classification_report,confusion_matrix
 
-# Load CSV file with raw string (Windows path)
-data = pd.read_csv(r"C:\Users\Maboi\OneDrive\02_Education\02_Professional CERT\Formatemp\Esis\IAML\bank-additional-full.csv", sep=';')
-
-# Drop the 'duration' column as recommended by dataset description
-data = data.drop('duration', axis=1)
-
-# Preview the first 10 rows
-print(data.head(10))
-
+data = pd.read_csv('/content/drive/MyDrive/GoogleCollab/bank-additional-full.csv',sep=';')
+# as recommended by the dataset description, we will drop the last contact duration values
+data = data.drop('duration',axis=1)
+data.head(10)
 
 data.shape
 
@@ -164,11 +155,11 @@ corr = dataProcessed.corr()
 
 # Clustermap senza numeri
 sns.clustermap(corr,
-                annot=False,     # niente numeri
-                cmap="RdYlGn",
-                center=0,
-                figsize=(18, 10),
-                cbar_kws={"shrink": 0.8})
+               annot=False,     # niente numeri
+               cmap="RdYlGn",
+               center=0,
+               figsize=(18, 10),
+               cbar_kws={"shrink": 0.8})
 
 plt.suptitle("Matrice di Correlazione con Clustering", fontsize=16, y=1.02)
 plt.show()
@@ -248,7 +239,7 @@ X_train[:,idx_numeric]=scaler.fit_transform(X_train[:,idx_numeric])
 X_test[:,idx_numeric]=scaler.transform(X_test[:,idx_numeric])
 
 tuned_parameters = [{'kernel': ['rbf'], 'gamma': [0.1],
-                    'C': [1]},
+                     'C': [1]},
                     {'kernel': ['linear'], 'C': [1]}]
 
 clf = GridSearchCV(SVC(), tuned_parameters, cv=5, scoring='precision')
