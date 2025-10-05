@@ -5,11 +5,11 @@ This repository contains the analyses, exercises, and projects I completed as pa
 
 It showcases my work throughout the course, including:
 
-Hands-on exercises from each module
+Tutorials and exercises from each module
 
 Data analysis experiments and practice notebooks
 
-Personal projects exploring real-world datasets
+Personal projects exploring real world datasets
 
 Notes and examples demonstrating core data analytics concepts
 
