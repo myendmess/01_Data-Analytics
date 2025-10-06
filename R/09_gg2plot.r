@@ -34,3 +34,4 @@ ggsave(
   height = 8,
   dpi = 300
 )
+?ggplot
